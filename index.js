@@ -1,16 +1,13 @@
-const express = require("express");
+import express from 'express'
 const app = express();
-const userRouter = require("./routes/routes");
-require('dotenv').config()
+import dotenv from 'dotenv'
+import router from './routes/routes.js';
+dotenv.config()
 const PORT = process.env.PORT
 
-app.get("/", (req, res) => {
-  res.send("hello home page");
-});
-
 app.use(express.json());
-
-app.use("/api", userRouter);
+app.use('/student', router)
+app.post('/student/:id',router)
 
 app.listen(PORT, () => {
   console.log(`server is listening on ${PORT}`);
