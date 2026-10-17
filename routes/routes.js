@@ -1,12 +1,13 @@
-const express = require('express');
-const router = express.Router();
-const {findProductHandler, getallProduct}=  require('../controller/product')
+import express from 'express'
+import {getdata,  createuser, updateUser, pathUser, deleteUser}  from '../controller/usercontroller.js'
+import requestLogger from '../middleware/moddleware.js';
 
-const requestLogger= require('../middleware/moddleware')
+const router = express.Router()
 
-router.post('/getproduct', findProductHandler)
-router.get('/getAllproduct',requestLogger , getallProduct)
+router.get('/',requestLogger,getdata);
+router.post('/:id',requestLogger,createuser)
+router.put('/:id',updateUser)
+router.patch('/:id',pathUser)
+router.delete('/:id',deleteUser)
 
-
-
-module.exports = router;
+export default router;
