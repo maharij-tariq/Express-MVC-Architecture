@@ -1,0 +1,28 @@
+
+<%- include('partials/header') %>
+
+<h1>All Blogs</h1>
+
+<ul>
+    <% blogs.forEach((blog) => { %>
+        <li>
+            <a href="/blogs/<%= blog.id %>">
+                <%= blog.title %>
+            </a>
+            by <b><%= blog.author %></b>
+
+            <% if (blog.author === 'Admin') { %>
+                <span style="color: red;">(Admin)</span>
+
+                <a href="/delete/<%= blog.id %>">
+                    [Delete]
+                </a>
+            <% } %>
+        </li>
+    <% }) %>
+</ul>
+
+<%- include('partials/footer') %>
+
+
+

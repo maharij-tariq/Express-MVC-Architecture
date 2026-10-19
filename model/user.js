@@ -1,6 +1,22 @@
-export const users = [
-    {id:1,name:"maharij",age :25,role : "Admin"},
-    {id:2,name:"Alex",age :30,role : "Editor"},
-    {id:3,name:"json",age :28,role : "views"},
-    {id:4,name:"jardon",age :33,role : "Admin"}
-]
+const blogs = [
+  {
+    id: 1,
+    title: "first blog",
+    content: "This is the content of the first blog",
+    author: "Admin",
+  },
+  {
+    id: 2,
+    title: "second blog",
+    content: "This is the content of the second blog",
+    author: "user",
+  },
+  {
+    id: 3,
+    title: "third blog",
+    content: "This is the content of the third blog",
+    author: "Admin",
+  },
+];
+
+export default blogs;
