@@ -1,8 +1,9 @@
 import express from 'express'
-import { fetchData, showData } from '../controller/fetchData.js'
-const router = express.Router()
+import { addData, fetchData } from '../controller/fetchData.js';
+const router = express.Router();
+
 
 router.get('/data',fetchData)
-router.get('/student',showData)
+router.post('/add-data',addData)
 
 export default router;

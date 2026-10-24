@@ -1,14 +1,16 @@
 import express from 'express'
 const app = express()
-import dotenv from 'dotenv'
 import router from './router/route.js'
+import dotenv from 'dotenv'
 dotenv.config()
-app.set('view engine','ejs')
+app.use(express.static('public'))
+app.use(express.urlencoded({extended:true}))
 const PORT = process.env.PORT;
 
-app.use('/',router)
-app.use('/student',router)
+app.use(express.json())
 
+app.use('/',router)
+app.use('/',router)
 
 app.listen(PORT,()=>{
     console.log(`server is listening on ${PORT}`)
