@@ -1,28 +1,27 @@
 {
+  "dependencies": {
+    "express": "^5.3.0",
+    "init": "^0.1.2",
+    "mongoose": "^9.11.4",
+    "node": "^26.12.1"
+  },
   "name": "express",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://github.com/maharij-tariq/Express-MVC-Architecture#readme",
-  "bugs": {
-    "url": "https://github.com/maharij-tariq/Express-MVC-Architecture/issues"
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/maharij-tariq/Express-MVC-Architecture.git"
   },
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "author": "Maharij Tariq",
   "type": "module",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bugs": {
+    "url": "https://github.com/maharij-tariq/Express-MVC-Architecture/issues"
   },
-  "dependencies": {
-    "dotenv": "^18.0.9",
-    "ejs": "^7.0.2",
-    "express": "^5.3.0",
-    "mongodb": "^7.7.0",
-    "node": "^26.12.1",
-    "node.js": "^0.0.1-security"
-  }
+  "homepage": "https://github.com/maharij-tariq/Express-MVC-Architecture#readme"
 }

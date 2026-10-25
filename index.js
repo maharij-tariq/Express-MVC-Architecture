@@ -1,20 +1,16 @@
-import express from 'express'
-const app = express()
-import router from './router/route.js'
-import dotenv from 'dotenv'
-dotenv.config()
-app.use(express.static('public'))
-app.use(express.urlencoded({extended:true}))
-const PORT = process.env.PORT;
 
-app.use(express.json())
+import express from "express";
+import { dbConnection } from "./config/db.js";
+import getData from "./controller/fetchData.js";
+const PORT = 5000;
 
-app.use('/',router)
-app.use('/',router)
-app.use('/',router)
-app.use('/',router)
-app.use('/',router)
+const startServer = async () => {
+    try {
+        await dbConnection();
+        await getData()
+    }catch(error){
+        console.log(error.message)
+    }
+};
 
-app.listen(PORT,()=>{
-    console.log(`server is listening on ${PORT}`)
-})
+startServer();
