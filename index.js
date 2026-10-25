@@ -1,17 +1,16 @@
-const express = require("express");
-const app = express();
-const userRouter = require("./routes/routes");
-require('dotenv').config()
-const PORT = process.env.PORT
 
-app.get("/", (req, res) => {
-  res.send("hello home page");
-});
+import express from "express";
+import { dbConnection } from "./config/db.js";
+import getData from "./controller/fetchData.js";
+const PORT = 5000;
 
-app.use(express.json());
+const startServer = async () => {
+    try {
+        await dbConnection();
+        await getData()
+    }catch(error){
+        console.log(error.message)
+    }
+};
 
-app.use("/api", userRouter);
-
-app.listen(PORT, () => {
-  console.log(`server is listening on ${PORT}`);
-});
+startServer();
