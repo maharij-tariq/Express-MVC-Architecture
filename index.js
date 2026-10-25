@@ -1,17 +1,20 @@
-const express = require("express");
-const app = express();
-const userRouter = require("./routes/routes");
-require('dotenv').config()
-const PORT = process.env.PORT
+import express from 'express'
+const app = express()
+import router from './router/route.js'
+import dotenv from 'dotenv'
+dotenv.config()
+app.use(express.static('public'))
+app.use(express.urlencoded({extended:true}))
+const PORT = process.env.PORT;
 
-app.get("/", (req, res) => {
-  res.send("hello home page");
-});
+app.use(express.json())
 
-app.use(express.json());
+app.use('/',router)
+app.use('/',router)
+app.use('/',router)
+app.use('/',router)
+app.use('/',router)
 
-app.use("/api", userRouter);
-
-app.listen(PORT, () => {
-  console.log(`server is listening on ${PORT}`);
-});
+app.listen(PORT,()=>{
+    console.log(`server is listening on ${PORT}`)
+})
