@@ -77,3 +77,24 @@ if(result.matchedCount === 1){
   res.status(200).json({message:'user updated successfully'})
 }
 }
+
+export const deleteData = async(req,res)=>{
+const id =  req.params.id;
+const newData = req.body;
+if(!ObjectId.isValid(id)){
+return  res.status(200).json({message:'invalid id try again'})
+}
+if(Object.keys(newData).length === 0){
+ return  res.status(404).json({message:'you id is empty'})
+}
+await client.connect()
+const db = client.db(dbName)
+const result  = await db.collection('student').deleteOne(
+  {_id: new ObjectId(id)},
+)
+ if(result.deletedCount === 1){
+ return res.status(200).json({message:'user is deleted successfully'})
+ }else{
+  res.status(404).json({message:'user not found'})
+ }
+}
