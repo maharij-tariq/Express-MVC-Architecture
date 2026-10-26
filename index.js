@@ -1,13 +1,21 @@
-
 import express from "express";
+const app = express()
 import { dbConnection } from "./config/db.js";
-import getData from "./controller/fetchData.js";
+import router from "./router/router.js";
 const PORT = 5000;
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
+app.use('/', router)
+app.use('/',router)
 
 const startServer = async () => {
     try {
         await dbConnection();
-        await getData()
+     app.listen(PORT,()=>{
+        console.log(`server is listening on ${PORT}`)
+     })
+
     }catch(error){
         console.log(error.message)
     }
