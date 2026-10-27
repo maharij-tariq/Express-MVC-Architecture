@@ -6,5 +6,6 @@ router.get('/data',getData)
 router.post('/student',postData)
 router.put('/student/:id',putData)
 router.patch('/student/:id',updatedData)
+router.delete('/student/:id',deleteData)
 
 export default router;

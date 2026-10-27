@@ -93,3 +93,22 @@ try {
 
 }
 }
+
+export const deleteData = async(req,res) =>{
+  try {
+    const id  = req.params.id;
+    if(!mongoose.isValidObjectId(id)){
+      res.status(400).json({message:"ivalid id",success:false})
+    }
+
+const data = await dataModel.deleteOne({_id: id});
+if(data.deletedCount === 0 ){
+  res.status(400).json({message:'student data is empty'})
+}else{
+  res.status(200).json({message:'deleted data successfully',success:true, result:data})
+}
+  } catch (error) {
+    res.status(404).json({message:"student not found",success:false,error: error.message})
+  }
+
+}
