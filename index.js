@@ -2,11 +2,14 @@ import express from "express";
 const app = express()
 import { dbConnection } from "./config/db.js";
 import router from "./router/router.js";
-const PORT = 5000;
+import dotenv from "dotenv";
+dotenv.config()
+const PORT = process.env.PORT;
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 app.use('/', router)
+app.use('/',router)
 app.use('/',router)
 
 const startServer = async () => {
