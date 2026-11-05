@@ -1,8 +1,8 @@
 import express from 'express'
-import { firstData, postData } from '../controller/todoController.js'
+import {  getdata, postData } from '../controller/todoController.js'
 const router = express.Router()
 
-router.get('/',firstData)
+router.get('/',getdata)
 router.post('/data',postData)
 
 export default router;
