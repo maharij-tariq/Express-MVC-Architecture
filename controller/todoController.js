@@ -1,4 +1,4 @@
-
+import mongoose from "mongoose";
 import modelTodo from "../model/modelTodo.js";
 
 
@@ -64,3 +64,34 @@ return res.status(200).json({
 
 }
 
+export const getId = async(req,res)=>{
+  try {
+      const id = req.params.id;
+  if(!mongoose.Types.ObjectId.isValid(id)){
+    return res.status(400).json({
+      success: false,
+      message: 'InValid ID',
+    })
+  }
+  const todos = await modelTodo.findById(id)
+  if(!todos){
+    return res.status(404).json({
+      success:false,
+      message:'todos is not provided '
+    })
+  }
+  res.status(200).json({
+    success:true,
+    message:'data fetched successfully',
+    data: todos
+  })
+
+  } catch (error) {
+    return res.status(500).json({
+      success:false,
+      message:'Server error',
+      error: error.message
+    })
+  }
+
+}
