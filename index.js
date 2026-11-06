@@ -1,17 +1,21 @@
-const express = require("express");
-const app = express();
-const userRouter = require("./routes/routes");
-require('dotenv').config()
-const PORT = process.env.PORT
+import express from 'express'
+import { fetchedData } from './config/todo.config.js';
+import router from './router/todoRouter.js';
+import dotenv from 'dotenv'
+dotenv.config()
+const app = express()
+const PORT = process.env.PORT;
 
-app.get("/", (req, res) => {
-  res.send("hello home page");
-});
+app.use(express.json())
+app.use('/',router)
 
-app.use(express.json());
+const startServer = async()=>{
+await fetchedData()
+app.listen(PORT,()=>{
+    console.log(`server is listening on ${PORT}`)
+})
+}
 
-app.use("/api", userRouter);
+startServer()
 
-app.listen(PORT, () => {
-  console.log(`server is listening on ${PORT}`);
-});
+
