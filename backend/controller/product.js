@@ -46,7 +46,15 @@ export const getProductById = async (req, res) => {
 
 export const getData = async (req, res) => {
   try {
-    const product = await productModel.find().sort({ iscreated: 1 });
+    const{search, category} = req.query;
+    const filter = {};
+    if(search){
+      filter.title = {$regex: search , $options: 'i'}
+    }
+    if(category){
+      filter.category = category;
+    }
+    const product = await productModel.find(filter).sort({ iscreated: 1 });
     if (!product) {
       res.status(404).json({ success: false, message: "product not found" });
     }

@@ -92,7 +92,7 @@ export function Productedit() {
             };
 
             await api.put(
-                `/product/update/${id}`,
+                `/api/product/update/${id}`,
                 updatedData
             );
 
