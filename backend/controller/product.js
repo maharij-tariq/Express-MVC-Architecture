@@ -50,9 +50,10 @@ export const getData = async (req, res) => {
     const filter = {};
     if(search){
       filter.title = {$regex: search , $options: 'i'}
+      filter.category = {$regex:search,$options:'i'}
     }
     if(category){
-      filter.category = category;
+        filter.category = category
     }
     const product = await productModel.find(filter).sort({ iscreated: 1 });
     if (!product) {

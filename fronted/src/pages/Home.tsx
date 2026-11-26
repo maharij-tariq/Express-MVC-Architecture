@@ -48,7 +48,7 @@ useEffect(()=>{
         <Link
             key={item._id}
             to={`/product/${item._id}`}
-            className="bg-white border border-gray-200 p-4 rounded-lg shadow-md hover:shadow-lg transition"
+            className="  MERN-E-commerence-project-day5  p-4 rounded-lg  hover:shadow-lg transition"
         >
             <img
                 src={item.images[0]}

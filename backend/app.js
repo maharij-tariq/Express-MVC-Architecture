@@ -5,6 +5,7 @@ import dotenv from 'dotenv'
 import connectionDB from "./config/db.js";
 import router from './router/route.js';
 import productRoute from './router/productRoute.js'
+import cartRouter from './router/cartRouter.js';
 dotenv.config()
 const app = express();
 const PORT = process.env.PORT;
@@ -13,6 +14,7 @@ app.use(cors())
 app.use(express.json())
 app.use('/api/user',router)
 app.use('/api/product', productRoute)
+app.use('/cart',cartRouter)
 const startServer = async() =>{
     await connectionDB();
     app.listen(PORT,()=>{
